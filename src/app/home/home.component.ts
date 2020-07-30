@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment'
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { FormBuilder, FormGroup , Validators , FormControl,NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup , Validators , FormControl, NgForm } from '@angular/forms';
+import {SearchService} from '../search.service';
+import {Router } from '@angular/router';
 
 
 @Component({
@@ -13,10 +15,11 @@ import { FormBuilder, FormGroup , Validators , FormControl,NgForm } from '@angul
 export class HomeComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = ['One','Two','Three'];
+  songlist: any[] = [];
   filteredOptions: Observable<string[]>;
 
 
-  constructor() { }
+  constructor(private searchService: SearchService, private router: Router) { }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -27,14 +30,34 @@ export class HomeComponent implements OnInit {
 
   private _filter(value: string): string[] {
     
-    const filterValue = value.toLowerCase();
+    const searchTerm = value.toLowerCase();
+    if (searchTerm) {
+       this.searchService
+        .searchSongs(searchTerm)
+        .subscribe(
+          (songs)=>{ 
+            this.songlist = songs.tracks.items;
+          },
+         );
 
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+         if(this.songlist){
+          return this.songlist ;
+         }
+    }else{
+      return null;
+    }
+
   }
 
-  onSubmit(form: NgForm){
-    /*console.log(form)*/
+  onSubmit(){
+    console.log(this.myControl);  
+    let param = {"q":this.myControl.value}
+    this.router.navigate(["search-result"], {queryParams: param});
+    /*console.log(this.myControl.value);
+    .tracks.items
+    */
 
   }
+
 
 }

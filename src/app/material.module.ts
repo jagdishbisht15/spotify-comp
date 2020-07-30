@@ -8,6 +8,14 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -19,7 +27,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
             MatListModule,
             MatAutocompleteModule,
             MatInputModule,
-            MatFormFieldModule
+            MatFormFieldModule,
+            MatCardModule,
+            MatDividerModule,
+            MatProgressBarModule,
+            MatTableModule,
+            CdkTableModule,
+            MatSliderModule,
+            MatTooltipModule
         ],
     exports: [MatToolbarModule,
             MatSidenavModule,
@@ -29,7 +44,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
             MatListModule,
             MatAutocompleteModule,
             MatInputModule,
-            MatFormFieldModule
+            MatFormFieldModule,
+            MatCardModule,
+            MatDividerModule,
+            MatProgressBarModule,
+            MatTableModule,
+            CdkTableModule,
+            MatSliderModule,
+            MatTooltipModule
     ],
 })
 

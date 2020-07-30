@@ -11,13 +11,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { SearchresultComponent } from './searchresult/searchresult.component';
+import { SongComponent } from './song/song.component';
+import { CompareComponent } from './compare/compare.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    SearchresultComponent,
+    SongComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [],

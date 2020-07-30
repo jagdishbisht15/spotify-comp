@@ -1,0 +1,29 @@
+<a *ngFor="let option of songlist?.tracks.items" href="" [routerLink]="['/song/'+option.id]" >
+<mat-card class="example-card"  >
+    <mat-card-header>
+       <div  mat-card-avatar class="example-header-image" style='background-image: url({{option.album.images[0].url}});'></div>
+      
+       <mat-card-title>{{option.name}}</mat-card-title>
+      <mat-card-subtitle>Album : {{option.album.name}}</mat-card-subtitle>
+      <mat-card-subtitle class="artist">Artist : 
+
+          <span *ngFor="let artist of option.artists">
+              
+            {{artist.name+", "}}
+        
+        </span>
+         </mat-card-subtitle>
+
+      
+    </mat-card-header>
+    
+  
+    <mat-card-content>
+      <p>
+        
+      </p>
+    </mat-card-content>
+    
+  </mat-card>
+</a>
+

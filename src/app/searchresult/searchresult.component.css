@@ -1,0 +1,29 @@
+.example-card {
+    max-width: 100%;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+
+  mat-card{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border-radius: 0px;
+  }
+
+  .mat-card-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.mat-card-subtitle {
+    color: rgb(31 32 33 / 54%);
+}
+.artist{
+    color: rgb(2 8 14 / 93%);
+}

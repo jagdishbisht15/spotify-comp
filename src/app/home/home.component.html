@@ -1,22 +1,32 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-    <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
+    <form class="example-form" (ngSubmit)="onSubmit()" >
         <mat-form-field class="example-full-width">
           <input type="text"
                  placeholder="Enter song"
-                 aria-label="Number"
+                 name="songname"
                  matInput
                  required
                  [formControl]="myControl"
-                 [matAutocomplete]="auto">
+                 [matAutocomplete]="auto"> 
                  <mat-error>Song can not be empty</mat-error>
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
+            
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSubmit()">
+            <mat-option  *ngFor="let option of filteredOptions | async" [value]="option.name" >
+                <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
+                    <img src="{{option.album.images[0].url}}" class="mat-card-avatar"/>
+                </div>
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <p >{{option.name}}</p>
+                    <p >Album :  {{option.album.name}}</p>
+                    <p> Artist :  <span *ngFor="let artist of option.artists"> {{artist.name+", "}}</span></p>
+                </div>
+                <mat-divider></mat-divider>
             </mat-option>
+            
           </mat-autocomplete>
         </mat-form-field>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <button type="submit" mat-raised-button color="primary">Search</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="myControl.status=='INVALID'" >Search</button>
         </div>
         
       </form>
