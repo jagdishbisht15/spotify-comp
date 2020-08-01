@@ -24,20 +24,21 @@ export class SongService {
 
   async fetchFeatures(id: string){
     id = id.trim();
-    const headers = new HttpHeaders().append('Authorization', 'Bearer '+this.currentToken);
+    //const headers = new HttpHeaders().append('Authorization', 'Bearer '+this.currentToken);
 
-    const promise = this.http.get<Song>(this.searchUrl+"audio-features/"+id, {headers}).toPromise()
+    const promise = this.http.get<Song>(this.searchUrl+"audio-features/"+id, ).toPromise()
     promise.then((data)=>{});
     return promise;
   }
 
   async fetchSong(id: string){
     id = id.trim();
-    const headers = new HttpHeaders().append('Authorization', 'Bearer '+this.currentToken);
+    //const headers = new HttpHeaders().append('Authorization', 'Bearer '+this.currentToken);
 
-    const promise = this.http.get<Song>(this.searchUrl+"tracks/"+id, {headers}).toPromise()
+    const promise = this.http.get<Song>(this.searchUrl+"tracks/"+id, ).toPromise()
     promise.then((data)=>{});
     return promise;
   }
+  
 
 }

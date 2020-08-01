@@ -29,8 +29,5 @@ export interface Song {
     name :  string;
     popularity : number;
     preview_url: string;
-
-
-
-
+    duration: string;
   }

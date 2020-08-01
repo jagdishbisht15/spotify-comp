@@ -43,6 +43,7 @@ export class SongComponent implements OnInit {
   goToCompare(){
     
     let param = {"first":this.track.id}
+    
     this.router.navigate(["compare"], {queryParams: param});
   }
 

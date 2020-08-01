@@ -26,9 +26,9 @@ export class SearchresultComponent implements OnInit {
       
     });
 
-      this.songlist =  await this.searchService.fetchData(this.song);
+    this.songlist =  await this.searchService.fetchData(this.song);
       
-      console.log(this.songlist)
+    console.log(this.songlist)
   }
 
    

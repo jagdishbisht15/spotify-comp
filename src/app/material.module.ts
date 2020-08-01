@@ -15,6 +15,9 @@ import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -34,7 +37,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
             MatTableModule,
             CdkTableModule,
             MatSliderModule,
-            MatTooltipModule
+            MatTooltipModule,
+            MatGridListModule,
+            MatPaginatorModule,
+            MatSnackBarModule
+            
         ],
     exports: [MatToolbarModule,
             MatSidenavModule,
@@ -51,7 +58,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
             MatTableModule,
             CdkTableModule,
             MatSliderModule,
-            MatTooltipModule
+            MatTooltipModule,
+            MatGridListModule,
+            MatPaginatorModule,
+            MatSnackBarModule
     ],
 })
 

@@ -1,0 +1,145 @@
+.feature-name{
+    margin-top: 0.5cm;
+    background-color: #fafafa;
+
+}
+.example-header-image {
+    background-size: cover;
+}
+
+.example-card {
+    max-width: 96.5%;
+}
+.mat-card{
+    box-shadow: none;
+}
+
+mat-card{
+     /* width: 100%;*/
+} 
+mat-grid-list {
+    background-color: #ffff;
+}
+
+.mat-card-header .mat-card-title {
+    margin-bottom: 0;
+}
+mat-grid-list .content{
+    padding-bottom: 0px !important;
+}
+.main-grid{
+    padding-bottom: 0px !important;
+}
+mat-grid-tile p{
+    margin-left: 0.8cm;
+}
+mat-grid-tile mat-card-title{
+    font-size: 15px;
+}
+.mat-card-header{
+    align-items: center;
+    justify-content: center;
+}
+
+mat-grid-list{
+    padding-bottom: calc(1 * ((4.33333% - 0.916667px) * 1) + 0px + 0px);
+
+}
+
+.graph-div{
+    /*margin-right: 10pt;*/
+}
+p {
+    margin: 0 0 0px;
+}
+
+.features{
+    margin-top: 0.5cm;
+}
+.feature-item{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+.mat-progress-bar {
+    display: block;
+    height: 20px;
+    left: 0.5cm;
+}
+
+.first-title{
+    margin-top: 12px;
+}
+
+@media only screen and (max-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }    
+    .mat-card-subtitle, .mat-card-content {
+        font-size: 10px;
+    }
+    .mat-card-header .mat-card-title {
+        font-size: 13px;
+    }
+  }
+  @media only screen and (min-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }
+
+    .mat-card-subtitle, .mat-card-content {
+        font-size: 13px;
+    }
+    .mat-card-header .mat-card-title {
+        font-size: 16px;
+    }
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .mat-card-avatar-search {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+mat-option{
+    height: 120px;
+}
+.mat-option-text{
+    width: 100%;
+}
+p{
+    margin: 0 0 0;
+}
+
+.mat-option {
+    line-height: 35px;
+}
+
+.search-form{
+    width: 80%;
+}
+
+mat-card-actions{
+    text-align: center;
+}

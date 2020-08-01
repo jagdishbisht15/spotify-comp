@@ -1,1 +1,502 @@
-<p>compare works!</p>
+<mat-grid-list cols="1" class="main-grid">
+    
+    <mat-grid-list cols="10" rowHeight="20px" class="content">
+        <mat-grid-tile [colspan]="2" [rowspan]="4">
+           
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="4" >
+            <div fxLayout="column" fxLayoutAlign="center center" class="search-form">
+                <form class="example-form" >
+                    <mat-form-field class="example-full-width">
+                      <input type="text"
+                             placeholder="Enter song"
+                             name="songname1"
+                             matInput
+                             required
+                             [formControl]="myControl"
+                             [matAutocomplete]="auto"> 
+                             <mat-error>Song can not be empty</mat-error>
+                        
+                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option  *ngFor="let option of filteredOptions | async" (onSelectionChange)="onSubmit(option.id,'first')"  [value]="option.name" >
+                            <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
+                                <img src="{{option.album.images[0].url}}" class="mat-card-avatar-search"/>
+                            </div>
+                            <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                                <p >{{option.name}}</p>
+                                <p >Album :  {{option.album.name}}</p>
+                                <p> Artist :  <span *ngFor="let artist of option.artists"> {{artist.name+", "}}</span></p>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </mat-option>
+                        
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+            </div>
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="4">
+            <div fxLayout="column" fxLayoutAlign="center center" class="search-form">
+                <form class="example-form" >
+                    <mat-form-field class="example-full-width">
+                      <input type="text"
+                             placeholder="Enter song"
+                             name="songname2"
+                             matInput
+                             required
+                             [formControl]="myControlSecond"
+                             [matAutocomplete]="autoSecond"> 
+                             <mat-error>Song can not be empty</mat-error>
+                        
+                      <mat-autocomplete autoActiveFirstOption #autoSecond="matAutocomplete" >
+                        <mat-option  *ngFor="let optionSecond of filteredOptionsSecond | async" [value]="optionSecond.name" (onSelectionChange)="onSubmit(optionSecond.id,'second')" >
+                            <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
+                                <img src="{{optionSecond.album.images[0].url}}" class="mat-card-avatar-search"/>
+                            </div>
+                            <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                                <p >{{optionSecond.name}}</p>
+                                <p >Album :  {{optionSecond.album.name}}</p>
+                                <p> Artist :  <span *ngFor="let artist of optionSecond.artists"> {{artist.name+", "}}</span></p>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </mat-option>
+                        
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+            </div>
+            
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="10" rowHeight="50px" class="content">
+        <mat-grid-tile [colspan]="2" [rowspan]="4">
+           
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="4" >
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>
+                    <div mat-card-avatar class="example-header-image" style='background-image: url({{songDetails?.album.images[0].url}});'></div>
+                </mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="4">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image" style='background-image: url({{secondSongDetails?.album.images[0].url}});'></div>
+                </mat-card-header>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="10" rowHeight="40px" class="content first-title" >
+        <mat-grid-tile [colspan]="2" [rowspan]="0.5">
+            <mat-card-title>Title</mat-card-title>
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="0.5">
+            <mat-card-title>{{songDetails?.name}}</mat-card-title>
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4" [rowspan]="0.5">
+            <mat-card-title>{{secondSongDetails?.name}}</mat-card-title>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="10" rowHeight="40px" class="content">
+        <mat-grid-tile [colspan]="2">
+            <mat-card-title>Album</mat-card-title>
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+            <mat-card-title>{{songDetails?.album.name}}</mat-card-title>
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+            <mat-card-title>{{secondSongDetails?.album.name}}</mat-card-title>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="10" rowHeight="40px" class="content">
+        <mat-grid-tile [colspan]="2">
+            <mat-card-title>Artist</mat-card-title>
+                
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+            <mat-card-title><span *ngFor="let artist of songDetails?.artists">
+                {{artist?.name+", "}}
+            </span></mat-card-title>
+            
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+        <mat-card-title><span *ngFor="let artist of secondSongDetails?.artists">
+                {{artist?.name+", "}}
+            </span></mat-card-title>
+            
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="10" rowHeight="40px" class="content">
+        <mat-grid-tile [colspan]="2">
+            <mat-card-title>Release date :</mat-card-title>
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+        <mat-card-title>{{songDetails?.album.release_date | date }}</mat-card-title>
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+        <mat-card-title>{{secondSongDetails?.album.release_date | date }}</mat-card-title>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="10" rowHeight="40px" class="content">
+        <mat-grid-tile [colspan]="2">
+            <mat-card-title>Duration :</mat-card-title>
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+            <mat-card-title>{{songDetails?.album.release_date | date }}</mat-card-title>
+            
+        </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="4">
+            <mat-card-title>{{secondSongDetails?.album.release_date | date }}</mat-card-title>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-grid-list>
+<mat-divider ></mat-divider>
+<mat-card class="example-card">
+    
+    <mat-card-content *ngIf="songFeatures || secondSongFeatures">
+        <mat-card-actions *ngIf="songFeatures && secondSongFeatures" class="savebutton">
+            <button mat-raised-button color="primary" (click)="saveCompare();">Save</button>
+            
+        </mat-card-actions>
+    <mat-card-title>Song Features</mat-card-title>
+    <div class="compare_view">
+        <div fxFlex="20"  fxLayout ="column" fxLayoutAlign="flex-start">
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Acousticness</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Danceability</p>
+                </div>
+            </div>
+        
+            
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Energy</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Instrumentalness</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Key</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Liveness</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Loudness</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Mode</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Speechiness</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Tempo</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Time_signature</p>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="50" fxLayout fxLayoutAlign="flex-start">
+                    <p>Valence</p>
+                </div>
+            </div>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div fxFlex="40"  fxLayout="column" >
+            <div class="features" >
+                <div fxFlex="80"   class="graph-div"   fxLayoutAlign="flex-start">
+                    <mat-progress-bar mode="determinate" value="{{songFeatures?.acousticness*100}}" matTooltip="Acousticness = {{songFeatures?.acousticness}}"></mat-progress-bar>
+                    
+                </div>
+                <div fxFlex="15"   fxLayoutAlign="flex-end">
+                    <p class="feature-item">{{songFeatures?.acousticness}}</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="" fxLayout='' class="graph-div"   fxLayoutAlign="flex-start">
+                    <mat-progress-bar mode="determinate" value="{{songFeatures?.danceability*100}}"  matTooltip="Danceability = {{songFeatures?.danceability}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="" fxLayout='15'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.danceability}}</mat-card-title>
+                </div>
+            </div>
+        
+            
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{songFeatures?.energy*100}}" matTooltip="Energy = {{songFeatures?.energy}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.energy}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.instrumentalness*1000}}" matTooltip="Instrumentalness = {{songFeatures?.instrumentalness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.instrumentalness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.key*10}}" matTooltip="key = {{songFeatures?.key}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.key}}</mat-card-title>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.liveness*100}}" matTooltip="Liveness =  {{songFeatures?.liveness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.liveness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.loudness+100}}" matTooltip="Loudness = {{songFeatures?.loudness}} db"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.loudness}} </mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.mode*100}}" matTooltip="Mode = {{songFeatures?.mode==0? 'Minor':'Major'}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.mode==0? 'Minor':'Major'}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.speechiness*100}}" matTooltip="Speechiness = {{songFeatures?.speechiness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.speechiness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.tempo}}" matTooltip="Tempo = {{songFeatures?.tempo}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.tempo}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{songFeatures?.time_signature}}" matTooltip="Time_signature = {{songFeatures?.time_signature}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.time_signature}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{songFeatures?.valence*100}}" matTooltip="Valence = {{songFeatures?.valence}}"></mat-progress-bar>
+                
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{songFeatures?.valence}}</mat-card-title>
+                </div>
+            </div>
+            
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div fxFlex="40"  fxLayout="column">
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{secondSongFeatures?.acousticness*100}}" matTooltip="Acousticness = {{secondSongFeatures?.acousticness}}"></mat-progress-bar>
+                    
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.acousticness}}</mat-card-title>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{secondSongFeatures?.danceability*100}}"  matTooltip="Danceability = {{secondSongFeatures?.danceability}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.danceability}}</mat-card-title>
+                </div>
+            </div>
+        
+            
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{secondSongFeatures?.energy*100}}" matTooltip="Energy = {{secondSongFeatures?.energy}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.energy}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.instrumentalness*1000}}" matTooltip="Instrumentalness = {{secondSongFeatures?.instrumentalness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.instrumentalness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.key*10}}" matTooltip="key = {{secondSongFeatures?.key}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.key}}</mat-card-title>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.liveness*100}}" matTooltip="Liveness =  {{secondSongFeatures?.liveness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.liveness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.loudness+100}}" matTooltip="Loudness = {{secondSongFeatures?.loudness}} db"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.loudness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.mode*100}}" matTooltip="Mode = {{secondSongFeatures?.mode==0? 'Minor':'Major'}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.mode==0? 'Minor':'Major'}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.speechiness*100}}" matTooltip="Speechiness = {{secondSongFeatures?.speechiness}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.speechiness}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.tempo}}" matTooltip="Tempo = {{secondSongFeatures?.tempo}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.tempo}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate"  value="{{secondSongFeatures?.time_signature}}" matTooltip="Time_signature = {{secondSongFeatures?.time_signature}}"></mat-progress-bar>
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.time_signature}}</mat-card-title>
+                </div>
+            </div>
+        
+            <div class="features">
+                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-progress-bar mode="determinate" value="{{secondSongFeatures?.valence*100}}" matTooltip="Valence = {{secondSongFeatures?.valence}}"></mat-progress-bar>
+                
+                </div>
+                <div fxFlex="10" fxLayout='column'   fxLayoutAlign="flex-end">
+                    <mat-card-title class="feature-item">{{secondSongFeatures?.valence}}</mat-card-title>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+      
+    </mat-card-content>
+    <mat-card-actions *ngIf="songFeatures && secondSongFeatures" class="savebutton">
+      <button mat-raised-button color="primary" (click)="saveCompare();">Save Comparision</button>
+      
+    </mat-card-actions>
+  </mat-card>
+  

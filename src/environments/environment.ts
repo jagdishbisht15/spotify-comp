@@ -6,9 +6,10 @@ export const environment = {
   production: false,
   'clientId': 'f6fb425dcaf143639f2083c796d52e5c',
   'clientSecret': '09fb6871ad2746cfb971d892ff5c6c86',
-  'token': 'BQBEasvM2X3J5SCrOrJ7MH3eRo8M2QcArE211w8tv9L3_dytDPlfQobJ1GnrcdcIivxswj2C-h8GBt9OSN8',
-  'apiUrl': 'https://api.spotify.com/v1/'
-
+  'key': 'ZjZmYjQyNWRjYWYxNDM2MzlmMjA4M2M3OTZkNTJlNWM6MDlmYjY4NzFhZDI3NDZjZmI5NzFkODkyZmY1YzZjODY=',
+  'token': 'BQDeznlnscddvMizzTd6Z_m4u2HYTVPGLgObeiE3eaCBwNEQSfsXzT60ZBUiZUtzLDY18y8_CW3iyU3AvMpf0',
+  'apiUrl': 'https://api.spotify.com/v1/',
+  'tokenUrl': 'https://accounts.spotify.com/api/'
 };
 
 
