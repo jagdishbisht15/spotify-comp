@@ -31,6 +31,14 @@ export class SearchresultComponent implements OnInit {
     console.log(this.songlist)
   }
 
+
+  goToCompare(trackId){
+    
+    let param = {"first":trackId}
+    
+    this.router.navigate(["compare"], {queryParams: param});
+  }
+
    
 
 }

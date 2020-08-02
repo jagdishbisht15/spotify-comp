@@ -5,30 +5,84 @@
   .example-form {
     min-width: 150px;
     max-width: 500px;
-    width: 100%;
+    width: 80%;
   }
   
   .example-full-width {
     width: 100%;
   }
 
-  .mat-card-avatar {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    object-fit: cover;
-}
-mat-option{
-    height: 120px;
-}
+  
+
 .mat-option-text{
     width: 100%;
 }
 p{
     margin: 0 0 0;
 }
+mat-divider{
+  margin-top: 7px !important;
+}
 
-.mat-option {
-    line-height: 35px;
+.mat-option.mat-active mat-divider{
+  display: none;
+}
+
+.album-name {
+  color: rgb(31 32 33 / 54%);
+}
+@media only screen and (min-width: 600px) {
+  .mat-card-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+  } 
+  
+  mat-option{
+    line-height: 30px;
+    height: 120px;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .mat-card-avatar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+  } 
+ 
+  mat-option{
+    line-height: 24px;
+    height: 85px;
+  }
+}
+
+
+
+@media only screen and (max-width: 420px) {
+  mat-option{
+    font-size: 14px;
+    
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .mat-card-avatar {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+  } 
+
+  mat-option{
+    font-size: 14px;
+    line-height: 16px;
+    height: 70px
+  }
 }

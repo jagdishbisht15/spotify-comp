@@ -14,9 +14,6 @@
     box-shadow: none;
 }
 
-mat-card{
-     /* width: 100%;*/
-} 
 mat-grid-list {
     background-color: #ffff;
 }
@@ -46,9 +43,6 @@ mat-grid-list{
 
 }
 
-.graph-div{
-    /*margin-right: 10pt;*/
-}
 p {
     margin: 0 0 0px;
 }
@@ -69,38 +63,11 @@ p {
 .first-title{
     margin-top: 12px;
 }
+.features-value{
+    margin-left: 35px;
+}
 
-@media only screen and (max-width: 435px) {
-    .mat-card-avatar {
-        height: 200px;
-        width: 200px;
-        border-radius: 0;
-        flex-shrink: 0;
-        object-fit: cover;
-    }    
-    .mat-card-subtitle, .mat-card-content {
-        font-size: 10px;
-    }
-    .mat-card-header .mat-card-title {
-        font-size: 13px;
-    }
-  }
-  @media only screen and (min-width: 435px) {
-    .mat-card-avatar {
-        height: 200px;
-        width: 200px;
-        border-radius: 0;
-        flex-shrink: 0;
-        object-fit: cover;
-    }
 
-    .mat-card-subtitle, .mat-card-content {
-        font-size: 13px;
-    }
-    .mat-card-header .mat-card-title {
-        font-size: 16px;
-    }
-  }
   .example-spacer {
     flex: 1 1 auto;
   }
@@ -143,3 +110,34 @@ p{
 mat-card-actions{
     text-align: center;
 }
+@media only screen and (max-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }    
+    .mat-card-subtitle, .mat-card-content {
+        font-size: 9px;
+    }
+    .mat-card-header .mat-card-title {
+        font-size: 13px;
+    }
+  }
+  @media only screen and (min-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }
+
+    .mat-card-subtitle, .mat-card-content {
+        font-size: 13px;
+    }
+    .mat-card-header .mat-card-title {
+        font-size: 16px;
+    }
+  }

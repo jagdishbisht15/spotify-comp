@@ -53,10 +53,12 @@ export class HomeComponent implements OnInit {
     console.log(this.myControl);  
     let param = {"q":this.myControl.value}
     this.router.navigate(["search-result"], {queryParams: param});
-    /*console.log(this.myControl.value);
-    .tracks.items
-    */
 
+  }
+
+  onSongSelection(trackId){
+    
+    this.router.navigate(["song/"+trackId]);
   }
 
 

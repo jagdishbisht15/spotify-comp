@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center" [style.margin-top]="'150px'">
     <form class="example-form" (ngSubmit)="onSubmit()" >
         <mat-form-field class="example-full-width">
           <input type="text"
@@ -10,18 +10,26 @@
                  [matAutocomplete]="auto"> 
                  <mat-error>Song can not be empty</mat-error>
             
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSubmit()">
-            <mat-option  *ngFor="let option of filteredOptions | async" [value]="option.name" >
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
+            <mat-option  *ngFor="let option of filteredOptions | async" (onSelectionChange)="onSongSelection(option.id)"  [value]="option.name" >
+              <div>
                 <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
-                    <img src="{{option.album.images[0].url}}" class="mat-card-avatar"/>
+                  <img src="{{option.album.images[0].url}}" class="mat-card-avatar"/>
                 </div>
                 <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
                     <p >{{option.name}}</p>
-                    <p >Album :  {{option.album.name}}</p>
+                    <p class="album-name">Album :  {{option.album.name}}</p>
                     <p> Artist :  <span *ngFor="let artist of option.artists"> {{artist.name+", "}}</span></p>
+                    
                 </div>
-                <mat-divider></mat-divider>
+                
+              </div>
+              <mat-divider ></mat-divider>
+              
+              
+                
             </mat-option>
+            
             
           </mat-autocomplete>
         </mat-form-field>
@@ -30,6 +38,7 @@
         </div>
         
       </form>
+     
 </div>
     
     

@@ -26,11 +26,22 @@ p {
     display: block;
     height: 20px;
 }
-
+.features-value{
+    margin-left: 14px;
+}
+@media only screen and (min-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }
+  }
 @media only screen and (max-width: 435px) {
     .mat-card-avatar {
-        height: 80px;
-        width: 80px;
+        height: 150px;
+        width: 150px;
         border-radius: 0;
         flex-shrink: 0;
         object-fit: cover;
@@ -42,12 +53,14 @@ p {
         font-size: 13px;
     }
   }
-  @media only screen and (min-width: 435px) {
+
+  @media only screen and (max-width: 360px) {
     .mat-card-avatar {
-        height: 200px;
-        width: 200px;
+        height: 100px;
+        width: 100px;
         border-radius: 0;
         flex-shrink: 0;
         object-fit: cover;
-    }
+    }  
   }
+  
