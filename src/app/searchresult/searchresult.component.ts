@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import { FormBuilder, FormGroup , Validators , FormControl, NgForm } from '@angular/forms';
-import {SearchService} from '../search.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {SearchService} from '../_services/search.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-searchresult',

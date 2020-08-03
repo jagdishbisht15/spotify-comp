@@ -10,19 +10,17 @@ import { MaterialModule } from  './material.module'
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { SearchresultComponent } from './searchresult/searchresult.component';
 import { SongComponent } from './song/song.component';
 import { CompareComponent } from './compare/compare.component';
 import { ComparisonlistComponent } from './comparisonlist/comparisonlist.component';
-import { HttpErrorInterceptor } from './http-error.interceptor'
+import { HttpErrorInterceptor } from './_helpers/http-error.interceptor'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     SidenavComponent,
     SearchresultComponent,
     SongComponent,

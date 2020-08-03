@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { FormBuilder, FormGroup , Validators , FormControl, NgForm } from '@angular/forms';
-import {SearchService} from '../search.service';
-import {Router, ActivatedRoute, Params, Routes} from '@angular/router';
-import {SongService} from '../song.service';
+import {  FormControl } from '@angular/forms';
+import {SearchService} from '../_services/search.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {SongService} from '../_services/song.service';
 import { Song } from '../song';
 import {Location} from '@angular/common'; 
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Search } from '../search';
 
 
 @Component({
@@ -27,8 +28,8 @@ export class CompareComponent implements OnInit {
   options: string[] = ['One','Two','Three'];
   songlist: any[] = [];
   songlistSecond: any[] = [];
-  filteredOptions: Observable<string[]>;
-  filteredOptionsSecond: Observable<string[]>;
+  filteredOptions: Observable<Search>;
+  filteredOptionsSecond: Observable<Search>;
   
   constructor(private location: Location, 
               private activatedRoute: ActivatedRoute, 
@@ -45,71 +46,32 @@ export class CompareComponent implements OnInit {
       this.secondsong = params['second'];
     });
     
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.myControl.valueChanges.
+    pipe(
       startWith(''),
-      map(value => this._filter(value))
-    );
+      map(value => this.searchService.searchSongs(value.toLowerCase()))
+    ).subscribe(songs => this.filteredOptions = songs);
+   
 
-    this.filteredOptionsSecond = this.myControlSecond.valueChanges.pipe(
+    this.myControlSecond.valueChanges.
+    pipe(
       startWith(''),
-      map(value => this._secondfilter(value))
-    );
+      map(value => this.searchService.searchSongs(value.toLowerCase()))
+    ).subscribe(songs => this.filteredOptionsSecond = songs);
+    console.log(this.filteredOptions);
+
+    
     if(this.firstsong){
       this.songFeatures =  await this.songService.fetchFeatures(this.firstsong);
-    
       this.songDetails =  await this.songService.fetchSong(this.firstsong);
     }
     
-    /*this.songDetails['duration'] = "";*/
     if(this.secondsong){
       this.secondSongFeatures =  await this.songService.fetchFeatures(this.secondsong);
       this.secondSongDetails =  await this.songService.fetchSong(this.secondsong);
-
     }
     
-    console.log(this.songFeatures );
-  }
-
-  private _filter(value: string): string[] {
-      
-    const searchTerm = value.toLowerCase();
-    if (searchTerm) {
-      this.searchService
-        .searchSongs(searchTerm)
-        .subscribe(
-          (songs)=>{ 
-            this.songlist = songs.tracks.items;
-          },
-        );
-
-        if(this.songlist){
-          return this.songlist ;
-        }
-    }else{
-      return null;
-    }
-
-  }
-
-  private _secondfilter(value: string): string[] {
-      
-    const searchTerm = value.toLowerCase();
-    if (searchTerm) {
-      this.searchService
-        .searchSongs(searchTerm)
-        .subscribe(
-          (songs)=>{ 
-            this.songlistSecond = songs.tracks.items;
-          },
-        );
-
-        if(this.songlistSecond){
-          return this.songlistSecond ;
-        }
-    }else{
-      return null;
-    }
-
+   
   }
 
   async onSubmit(id, term){
@@ -135,13 +97,6 @@ export class CompareComponent implements OnInit {
     
   }
 
-
-  millisToMinutesAndSeconds(millis) {
-    let ms = millis;
-    ms = 1000*Math.round(ms/1000); // round to nearest second
-    var d = new Date(ms);
-    return d.getUTCMinutes() + ':' + d.getUTCSeconds(); // "4:59"
-  }
 
 
   saveCompare(){

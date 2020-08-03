@@ -15,9 +15,9 @@ import {
 } from '@angular/common/http';
 import { Observable,BehaviorSubject, throwError, of as observableOf} from 'rxjs';
 import { catchError, retry, filter, delay, map,switchMap,take, finalize,mergeMap  } from 'rxjs/operators';
-import { environment } from '../environments/environment'
+import { environment } from '../../environments/environment'
 
-import {AuthService} from './auth.service'
+import {AuthService} from '../_services/auth.service'
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -68,15 +68,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                         }
                       });
                       
-                      return next.handle(req).
-                        pipe(
-                         /* catchError((errs: HttpErrorResponse) => {
-                             //Catch another error
-                          console.log(errs);
-
-                        })*/);
-                    }else {
-                      //Logout from account
+                      return next.handle(req);
                     }
                   }
                 ));

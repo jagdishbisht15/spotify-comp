@@ -1,12 +1,5 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import { FormBuilder, FormGroup , Validators , FormControl, NgForm } from '@angular/forms';
-import {SearchService} from '../search.service';
-import {Router, ActivatedRoute, Params, Routes} from '@angular/router';
-import {SongService} from '../song.service';
-import {ComparisonlistService} from '../comparisonlist.service';
-import { Song } from '../song';
+import {ComparisonlistService} from '../_services/comparisonlist.service';
 
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';

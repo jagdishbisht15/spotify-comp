@@ -66,6 +66,10 @@ p {
 .features-value{
     margin-left: 35px;
 }
+.album-name{
+    color: rgb(31 32 33 / 54%);
+    
+}
 
 
   .example-spacer {
@@ -83,14 +87,14 @@ p {
   }
 
   .mat-card-avatar-search {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     flex-shrink: 0;
     object-fit: cover;
 }
 mat-option{
-    height: 120px;
+    height: 80px;
 }
 .mat-option-text{
     width: 100%;
@@ -100,7 +104,7 @@ p{
 }
 
 .mat-option {
-    line-height: 35px;
+    line-height: 20px;
 }
 
 .search-form{
@@ -110,22 +114,55 @@ p{
 mat-card-actions{
     text-align: center;
 }
-@media only screen and (max-width: 435px) {
-    .mat-card-avatar {
-        height: 200px;
-        width: 200px;
-        border-radius: 0;
+.feature-title{
+    color: rgb(31 32 33 / 54%);
+    text-align: center;
+}
+
+.feature-title-value{
+    color: rgb(31 32 33 / 54%);
+    text-align: center;
+}
+.title-name{
+    text-align: center;
+    font-weight: bold;
+}
+
+.autocomplete-title-name{
+    font-weight: bold;
+}
+mat-divider{
+    margin-top: 7px !important;
+  }
+@media only screen and (max-width: 900px) {
+    .mat-card-avatar-search {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
         flex-shrink: 0;
         object-fit: cover;
-    }    
-    .mat-card-subtitle, .mat-card-content {
-        font-size: 9px;
     }
-    .mat-card-header .mat-card-title {
-        font-size: 13px;
+}
+
+@media only screen and (max-width: 600px) {
+    .mat-card-avatar-search {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        object-fit: cover;
     }
-  }
-  @media only screen and (min-width: 435px) {
+    .mat-option {
+        line-height: 17px;
+        font-size: 12px;
+    }
+    mat-option{
+        height: 56px;
+        
+    }
+}
+
+@media only screen and (min-width: 435px) {
     .mat-card-avatar {
         height: 200px;
         width: 200px;
@@ -140,4 +177,52 @@ mat-card-actions{
     .mat-card-header .mat-card-title {
         font-size: 16px;
     }
+    
   }
+@media only screen and (max-width: 435px) {
+    .mat-card-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 0;
+        flex-shrink: 0;
+        object-fit: cover;
+    }    
+    .mat-card-subtitle, .mat-card-content {
+        font-size: 9px;
+    }
+    .mat-card-header .mat-card-title {
+        font-size: 13px;
+    }
+    .example-form {
+        min-width: 120px;
+        max-width: 500px;
+        width: 100%;
+    }
+    .mat-option {
+        line-height: 14px;
+        font-size: 12px;
+            padding: 0px 3px;
+    }
+    .feature-title{
+    
+        font-size: 12px !important;
+    }
+    .feature-title-value{
+        font-size: 13px !important;
+    }
+
+    .title-name{
+        font-size: 13px !important;
+    }
+
+    mat-option{
+        height: 50px;
+        padding: 0px 3px;
+    }
+  }
+
+
+
+  
+
+  

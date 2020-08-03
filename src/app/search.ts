@@ -1,3 +1,3 @@
 export interface Search {
-    tracks: any;
+    tracks: any[] ;
   }
