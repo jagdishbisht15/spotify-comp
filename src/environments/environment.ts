@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  'key': 'ZjZmYjQyNWRjYWYxNDM2MzlmMjA4M2M3OTZkNTJlNWM6MDlmYjY4NzFhZDI3NDZjZmI5NzFkODkyZmY1YzZjODY=',
+  'key': '<put the key here>',
   'apiUrl': 'https://api.spotify.com/v1/',
   'tokenUrl': 'https://accounts.spotify.com/api/'
 };
