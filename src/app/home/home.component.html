@@ -1,44 +1,26 @@
 <div fxLayout="column" fxLayoutAlign="center center" [style.margin-top]="'150px'">
-    <form class="example-form" (ngSubmit)="onSubmit()" >
+    <form class="example-form" (ngSubmit)="onSubmit()">
         <mat-form-field class="example-full-width">
-          <input type="text"
-                 placeholder="Enter song"
-                 name="songname"
-                 matInput
-                 required
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto"> 
-                 <mat-error>Song can not be empty</mat-error>
-            
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
-            <mat-option  *ngFor="let option of (filteredOptions | async)?.tracks.items" (onSelectionChange)="onSongSelection(option.id)"  [value]="option.name" >
-              <div>
-                <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
-                  <img src="{{option.album.images[0].url}}" class="mat-card-avatar"/>
-                </div>
-                <div fxFlex="70" fxLayout='column'   fxLayoutAlign="flex-end">
-                    <p >{{option.name}}</p>
-                    <p class="album-name">Album :  {{option.album.name}}</p>
-                    <p> Artist :  <span *ngFor="let artist of option.artists"> {{artist.name+", "}}</span></p>
-                    
-                </div>
-                
-              </div>
-              <mat-divider ></mat-divider>
-              
-              
-                
-            </mat-option>
-            
-            
-          </mat-autocomplete>
+            <input type="text" placeholder="Enter song" name="songname" matInput required [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-error>Song can not be empty</mat-error>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of (filteredOptions | async)?.tracks.items" (onSelectionChange)="onSongSelection(option.id)" [value]="option.name">
+                    <div>
+                        <div fxFlex="30" fxLayout fxLayoutAlign="flex-start">
+                            <img src="{{option.album.images[0].url}}" class="mat-card-avatar" />
+                        </div>
+                        <div fxFlex="70" fxLayout='column' fxLayoutAlign="flex-end">
+                            <p>{{option.name}}</p>
+                            <p class="album-name">Album : {{option.album.name}}</p>
+                            <p> Artist : <span *ngFor="let artist of option.artists"> {{artist.name+", "}}</span></p>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <button type="submit" mat-raised-button color="primary" [disabled]="myControl.status=='INVALID'" >Search</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="myControl.status=='INVALID'">Search</button>
         </div>
-        
-      </form>
-     
+    </form>
 </div>
-    
-    

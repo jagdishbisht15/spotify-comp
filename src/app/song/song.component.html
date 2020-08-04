@@ -1,177 +1,153 @@
 <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image" style='background-image: url({{songDetails?.album.images[0].url}});'></div>
-      <mat-card-title>{{songDetails?.name}}</mat-card-title>
-      <mat-card-subtitle>Album : {{songDetails?.album.name}}</mat-card-subtitle>
-      <mat-card-subtitle class="artist">Artist : 
-
-        <span *ngFor="let artist of songDetails?.artists">
+        <div mat-card-avatar class="example-header-image" style='background-image: url({{songDetails?.album.images[0].url}});'></div>
+        <mat-card-title>{{songDetails?.name}}</mat-card-title>
+        <mat-card-subtitle>Album : {{songDetails?.album.name}}</mat-card-subtitle>
+        <mat-card-subtitle class="artist">Artist :
+            <span *ngFor="let artist of songDetails?.artists">
             {{artist?.name+", "}}
         </span>
-        
-       </mat-card-subtitle>
-       <mat-card-subtitle>Release date : {{songDetails?.album.release_date | date }}</mat-card-subtitle>
-       <mat-card-subtitle><button mat-raised-button color="primary" (click)="goToCompare();">Add to Compare</button></mat-card-subtitle>
-       
+        </mat-card-subtitle>
+        <mat-card-subtitle>Release date : {{songDetails?.album.release_date | date }}</mat-card-subtitle>
+        <mat-card-subtitle><button mat-raised-button color="primary" (click)="goToCompare();">Add to Compare</button></mat-card-subtitle>
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
-       
-    <mat-card-title>Song Features</mat-card-title>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Acousticness</p>
+        <mat-card-title>Song Features</mat-card-title>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Acousticness</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.acousticness*100}}" matTooltip="Acousticness = {{songFeatures?.acousticness}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.acousticness}}
+            </div>
         </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate" value="{{songFeatures?.acousticness*100}}" matTooltip="Acousticness = {{songFeatures?.acousticness}}"></mat-progress-bar>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Danceability</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.danceability*100}}" matTooltip="Danceability = {{songFeatures?.danceability}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.danceability}}
+            </div>
         </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.acousticness}}
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Energy</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.energy*100}}" matTooltip="Energy = {{songFeatures?.energy}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.energy}}
+            </div>
         </div>
-    </div>
-    
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Danceability</p>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Instrumentalness</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.instrumentalness*1000}}" matTooltip="Instrumentalness = {{songFeatures?.instrumentalness}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.instrumentalness}}
+            </div>
         </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate" value="{{songFeatures?.danceability*100}}"  matTooltip="Danceability = {{songFeatures?.danceability}}"></mat-progress-bar>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Key</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.key*10}}" matTooltip="key = {{songFeatures?.key}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.key}}
+            </div>
         </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.danceability}}
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Liveness</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.liveness*100}}" matTooltip="Liveness =  {{songFeatures?.liveness}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.liveness}}
+            </div>
         </div>
-    </div>
-
-    
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Energy</p>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Loudness</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.loudness+100}}" matTooltip="Loudness = {{songFeatures?.loudness}} db"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.loudness}}
+            </div>
         </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate" value="{{songFeatures?.energy*100}}" matTooltip="Energy = {{songFeatures?.energy}}"></mat-progress-bar>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Mode</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.mode*100}}" matTooltip="Mode = {{songFeatures?.mode==0? 'Minor':'Major'}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.mode==0? 'Minor':'Major'}}
+            </div>
         </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.energy}}
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Speechiness</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.speechiness*100}}" matTooltip="Speechiness = {{songFeatures?.speechiness}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.speechiness}}
+            </div>
         </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Instrumentalness</p>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Tempo</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.tempo}}" matTooltip="Tempo = {{songFeatures?.tempo}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.tempo}}
+            </div>
         </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.instrumentalness*1000}}" matTooltip="Instrumentalness = {{songFeatures?.instrumentalness}}"></mat-progress-bar>
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Time_signature</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.time_signature}}" matTooltip="Time_signature = {{songFeatures?.time_signature}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.time_signature}}
+            </div>
         </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.instrumentalness}}
+        <div class="features">
+            <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
+                <p>Valence</p>
+            </div>
+            <div fxFlex="45" fxLayout='column' fxLayoutAlign="flex-start">
+                <mat-progress-bar mode="determinate" value="{{songFeatures?.valence*100}}" matTooltip="Valence = {{songFeatures?.valence}}"></mat-progress-bar>
+            </div>
+            <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
+                {{songFeatures?.valence}}
+            </div>
         </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Key</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.key*10}}" matTooltip="key = {{songFeatures?.key}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.key}}
-        </div>
-    </div>
-    
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Liveness</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.liveness*100}}" matTooltip="Liveness =  {{songFeatures?.liveness}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.liveness}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Loudness</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.loudness+100}}" matTooltip="Loudness = {{songFeatures?.loudness}} db"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.loudness}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Mode</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.mode*100}}" matTooltip="Mode = {{songFeatures?.mode==0? 'Minor':'Major'}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.mode==0? 'Minor':'Major'}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Speechiness</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.speechiness*100}}" matTooltip="Speechiness = {{songFeatures?.speechiness}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.speechiness}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Tempo</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.tempo}}" matTooltip="Tempo = {{songFeatures?.tempo}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.tempo}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Time_signature</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate"  value="{{songFeatures?.time_signature}}" matTooltip="Time_signature = {{songFeatures?.time_signature}}"></mat-progress-bar>
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.time_signature}}
-        </div>
-    </div>
-
-    <div class="features">
-        <div fxFlex="45" fxLayout fxLayoutAlign="flex-start">
-            <p>Valence</p>
-        </div>
-        <div fxFlex="45" fxLayout='column'   fxLayoutAlign="flex-start">
-            <mat-progress-bar mode="determinate" value="{{songFeatures?.valence*100}}" matTooltip="Valence = {{songFeatures?.valence}}"></mat-progress-bar>
-        
-        </div>
-        <div fxFlex="10" fxLayout fxLayoutAlign="flex-start" class="features-value">
-            {{songFeatures?.valence}}
-        </div>
-    </div>
-     
-        
-      
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="goToCompare();">Add to Compare</button>
-      
+        <button mat-raised-button color="primary" (click)="goToCompare();">Add to Compare</button>
     </mat-card-actions>
-  </mat-card>
-  
+</mat-card>

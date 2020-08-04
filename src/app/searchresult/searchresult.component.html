@@ -1,36 +1,15 @@
-<mat-card class="example-card" *ngFor="let option of songlist?.tracks.items"  >
+<mat-card class="example-card" *ngFor="let option of songlist?.tracks.items">
     <mat-card-header>
-      
-      <!--<a href="" [routerLink]="['/song/'+option.id]" >
-        <div  mat-card-avatar class="example-header-image" style='background-image: url({{option.album.images[0].url}});'></div>
-      </a>-->
-      <a href="" mat-card-avatar class="example-header-image"  style='background-image: url({{option.album.images[0].url}});' [routerLink]="['/song/'+option.id]" >
-      
-      </a>
-      <mat-card-title><a href="" [routerLink]="['/song/'+option.id]" >{{option.name}}</a></mat-card-title>
-      <mat-card-subtitle>Album : {{option.album.name}}</mat-card-subtitle>
-      <mat-card-subtitle class="artist">Artist : 
-
-          <span *ngFor="let artist of option.artists">
-              
+        <a href="" mat-card-avatar class="example-header-image" style='background-image: url({{option.album.images[0].url}});' [routerLink]="['/song/'+option.id]"></a>
+        <mat-card-title><a href="" [routerLink]="['/song/'+option.id]">{{option.name}}</a></mat-card-title>
+        <mat-card-subtitle>Album : {{option.album.name}}</mat-card-subtitle>
+        <mat-card-subtitle class="artist">Artist :
+            <span *ngFor="let artist of option.artists">
             {{artist.name+", "}}
-        
           </span>
-        
-      </mat-card-subtitle>
-      <mat-card-subtitle >
-        <button class="compare-btn" matTooltip="Add to Comapre" mat-raised-button color="primary" (click)="goToCompare(option.id);"><mat-icon>compare_arrows</mat-icon></button>
-      </mat-card-subtitle>
-        
-         
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <button class="compare-btn" matTooltip="Add to Comapre" mat-raised-button color="primary" (click)="goToCompare(option.id);"><mat-icon>compare_arrows</mat-icon></button>
+        </mat-card-subtitle>
     </mat-card-header>
-    
-  
-    <mat-card-content>
-      <p>
-       
-     
-      </p>
-    </mat-card-content>
-  </mat-card>
-
+</mat-card>

@@ -1,71 +1,73 @@
 .example-card {
-  max-width: 100%;
-}
-.compare-btn{
-  min-width: 56px;
-  line-height: 30px;
-}  
-.example-header-image {
-  background-size: cover;
+    max-width: 100%;
 }
 
-mat-card{
-  /* cursor: pointer;*/
-  background-color: white;
-  color: black;
-  border-radius: 0px;
+.compare-btn {
+    min-width: 56px;
+    line-height: 30px;
+}
+
+.example-header-image {
+    background-size: cover;
+}
+
+mat-card {
+    /* cursor: pointer;*/
+    background-color: white;
+    color: black;
+    border-radius: 0px;
 }
 
 .mat-card-avatar {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
 }
 
 .mat-card-subtitle {
-  color: rgb(31 32 33 / 54%);
+    color: rgb(31 32 33 / 54%);
 }
-.artist{
-  color: rgb(2 8 14 / 93%);
+
+.artist {
+    color: rgb(2 8 14 / 93%);
 }
-a { 
-  text-decoration: none;
-  color: black;
+
+a {
+    text-decoration: none;
+    color: black;
 }
-.mat-card-header{
-  margin-left: 40px;
-  align-items: center;
+
+.mat-card-header {
+    margin-left: 40px;
+    align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
-  .mat-card-header{
-    font-size: 15px;
-    margin-left: 0px;
-  }
+    .mat-card-header {
+        font-size: 15px;
+        margin-left: 0px;
+    }
 }
 
 @media only screen and (max-width: 360px) {
-  
-  .mat-card-title {
-    font-size: 15px;
-  } 
-  .mat-card-header{
-    font-size: 15px;
-    margin-left: 0px;
-  }
-
-  .mat-card-actions, .mat-card-subtitle, .mat-card-content {
-    display: block;
-    margin-bottom: 9px;
-    font-size: 13px;
-  }
-  
-  .compare-btn{
-    min-width: 56px;
-    line-height: 20px;
-  }  
-
-  
+    .mat-card-title {
+        font-size: 15px;
+    }
+    .mat-card-header {
+        font-size: 15px;
+        margin-left: 0px;
+    }
+    .mat-card-actions,
+    .mat-card-subtitle,
+    .mat-card-content {
+        display: block;
+        margin-bottom: 9px;
+        font-size: 13px;
+    }
+    .compare-btn {
+        min-width: 56px;
+        line-height: 20px;
+    }
 }
